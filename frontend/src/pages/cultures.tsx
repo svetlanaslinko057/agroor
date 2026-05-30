@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import Navbar1 from "../components/figma/navbar1";
 import Footer1 from "../components/figma/footer1";
+import CtaSection1 from "../components/figma/cta-section1";
 import RevealHeading from "../components/welcome/reveal-heading";
 import styles from "./cultures.module.css";
 import { listCulturesPublic, type Culture } from "../lib/cultures-api";
@@ -1033,47 +1034,8 @@ const Cultures: React.FC = () => {
         </div>
       </section>
 
-      {/* ============ 9. CONSULTATION (exact design positions) ============ */}
-      <section className={styles.consultWrap} data-testid="cultures-consult">
-        {/* Background image: bottom half, behind everything */}
-        <img loading="lazy" decoding="async" className={styles.consultImage} src="/image1@2x.webp" alt="" />
-        <div className={styles.consultGradient} />
-
-        {/* Heading: top 86, left 120 */}
-        <h2 className={styles.consultHeading}>
-          Не знайшли{" "}
-          <span className={styles.italic}>вашу культуру?</span>
-        </h2>
-
-        {/* Text "Опишіть культуру..." — top 264, left 120, width 824 */}
-        <div className={styles.consultText}>
-          Опишіть культуру та задачу - ми підготуємо безкоштовно{" "}
-          <b>індивідуальну схему біозахисту</b> з розрахунком витрат на ваші угіддя
-        </div>
-
-        {/* Button — top 264, left 963 */}
-        <button className={styles.consultBtn} data-testid="consult-btn">
-          <PhoneIcon size={24} />
-          Отримати консультацію
-        </button>
-
-        {/* Phone — top 360, left 1108 */}
-        <div className={styles.consultPhone}>+380 (50) 937-56-57</div>
-
-        {/* 24 год card — top 614, left 120, 494x176 */}
-        <div className={styles.cart24}>
-          <span className={styles.ico}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <path d="M3.33 20C3.33 10.795 10.795 3.33 20 3.33C29.205 3.33 36.67 10.795 36.67 20C36.67 29.205 29.205 36.67 20 36.67C10.795 36.67 3.33 29.205 3.33 20Z" stroke="#F9F7F2" strokeWidth="1.67" strokeLinecap="square"/>
-              <path d="M20 10.83V20L25 25" stroke="#F9F7F2" strokeWidth="1.67" strokeLinecap="square"/>
-            </svg>
-          </span>
-          <div>
-            <div className={styles.label}>24 год</div>
-            <span className={styles.body}>Середній час відповіді нашого консультанта</span>
-          </div>
-        </div>
-      </section>
+      {/* ============ 9. CONSULTATION — reused CtaSection1 (same as About / Catalog / Product) ============ */}
+      <CtaSection1 />
 
       <Footer1 device="Desktop" />
     </div>
