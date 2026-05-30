@@ -853,8 +853,10 @@ const Cultures: React.FC = () => {
 
           {/* Top-right : Ефективність */}
           <div className={styles.whyCard} data-testid="why-card-efektyvnist">
-            <h3 className={styles.whyCardTitle}>{WHY_CARDS[0].title}</h3>
-            <p className={styles.whyCardText}>{WHY_CARDS[0].desc}</p>
+            <div className={styles.whyCardCopy}>
+              <h3 className={styles.whyCardTitle}>{WHY_CARDS[0].title}</h3>
+              <p className={styles.whyCardText}>{WHY_CARDS[0].desc}</p>
+            </div>
             <img
               loading="lazy"
               decoding="async"
@@ -867,8 +869,10 @@ const Cultures: React.FC = () => {
 
           {/* Bottom-left : Ціна */}
           <div className={styles.whyCard} data-testid="why-card-cina">
-            <h3 className={styles.whyCardTitle}>{WHY_CARDS[1].title}</h3>
-            <p className={styles.whyCardText}>{WHY_CARDS[1].desc}</p>
+            <div className={styles.whyCardCopy}>
+              <h3 className={styles.whyCardTitle}>{WHY_CARDS[1].title}</h3>
+              <p className={styles.whyCardText}>{WHY_CARDS[1].desc}</p>
+            </div>
             <img
               loading="lazy"
               decoding="async"
@@ -881,8 +885,10 @@ const Cultures: React.FC = () => {
 
           {/* Bottom-right : Застосування */}
           <div className={styles.whyCard} data-testid="why-card-zastosuvannya">
-            <h3 className={styles.whyCardTitle}>{WHY_CARDS[2].title}</h3>
-            <p className={styles.whyCardText}>{WHY_CARDS[2].desc}</p>
+            <div className={styles.whyCardCopy}>
+              <h3 className={styles.whyCardTitle}>{WHY_CARDS[2].title}</h3>
+              <p className={styles.whyCardText}>{WHY_CARDS[2].desc}</p>
+            </div>
             <img
               loading="lazy"
               decoding="async"

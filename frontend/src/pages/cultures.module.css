@@ -1876,20 +1876,23 @@
     line-height: 1.12;
     letter-spacing: -0.3px;
   }
-  /* Cards container: 1-column grid with 16px vertical gap, 35px horizontal
-     padding on both sides (335px card width fits in 390px - 2×27.5 ≈
-     center). User spec: 16px gap, 35px L/R margins. */
+  /* Cards container: 1-column grid with 16px vertical gap. The card
+     itself is 335px wide and is centered inside the grid track. We use
+     0 horizontal padding here (card defines its own width) so the card
+     is symmetric on the screen — `place-items: center` ensures perfect
+     horizontal centering. */
   .whyGrid {
     grid-template-columns: 1fr;
     gap: 16px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
     box-sizing: border-box;
     justify-items: center;
+    place-items: center;
   }
   .whyLead {
     gap: 20px;
-    padding: 0 20px;
+    padding: 0 27px;
   }
   .leadPara {
     font-size: 16px;
@@ -1897,27 +1900,36 @@
   }
   /* Card per Figma spec:
         width: 335px;  height: 378px;
-        padding: 24px 12px;
-        gap: 32px;
-        radius: 6px;
-        background: rgba(255,255,255,0.30);
-     All 3 cards identical size — image fills remaining vertical space. */
+        padding: 24px;   (symmetric)
+        Title + body grouped tightly at TOP (8px between title and body).
+        Image anchored to the BOTTOM, filling the remaining vertical space
+        (~170-200px tall) to match Figma where the photo is prominent
+        and the copy block sits compactly above it.
+        background: rgba(255,255,255,0.30). */
   .whyCard {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
     width: 335px;
     max-width: 100%;
     height: 378px;
     min-height: 0;
-    padding: 24px 12px;
-    gap: 32px;
+    padding: 24px 16px;
+    gap: 0;
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.30);
-    align-self: stretch;
+    align-self: center;
     overflow: hidden;
     box-sizing: border-box;
+  }
+  /* Title + body grouped together (tight) so they read as a single block. */
+  .whyCardCopy {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;                       /* tight title→body gap per Figma */
+    flex: 0 0 auto;
+    width: 100%;
   }
   /* Decorative gradient layers from desktop ::before / ::after are visually
      too heavy for the small mobile card — disable them so the flat
@@ -1943,7 +1955,7 @@
   /* Body: Golos Text 14/400/120% / cream */
   .whyCardText {
     margin: 0;
-    flex: 0 0 auto;                /* don't grow — let image take remainder */
+    flex: 0 0 auto;
     font-family: "Golos Text", system-ui, sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -1951,15 +1963,20 @@
     letter-spacing: 0;
     color: var(--text-cream, #F9F7F2);
   }
-  /* Image fills remaining vertical space below title + text. */
+  /* Image anchored to the bottom of the card. Uses `margin-top: auto` so it
+     occupies all remaining vertical space, regardless of how many lines the
+     body text wraps to. Fixed min-height keeps the photo visually prominent
+     (matches Figma where the image is ~½ of the card height). */
   .whyCardImage {
     display: block;
     width: 100%;
+    margin-top: auto;
     flex: 1 1 auto;
-    min-height: 0;
+    min-height: 160px;
+    max-height: 200px;
     border-radius: 4px;
     object-fit: cover;
-    object-position: center bottom;   /* anchor to bottom so coins/details stay visible */
+    object-position: center;
     user-select: none;
     pointer-events: none;
   }

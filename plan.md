@@ -1,5 +1,30 @@
 # TAMIS АГРО — План: модульна CRM/Продажі в адмінці (Orders/Payments/Users/Abandoned Carts/Upsells)
 
+## 3.15) Cultures Mobile — "Чому агрономи" Why-Bio Cards Geometry Fix (DONE — 2026-05-30)
+
+**Скарга користувача (2 скриншоти — поточне vs Figma-таргет):**
+1. Шрифти/розміри/інтервали поточної реалізації не співпадають з дизайном — title і body розтягнуті, між ними завеликий проміжок (gap: 32px).
+2. Зображення в картці мале (140px висоти, flex:1 ділиться з тескстом) — у дизайні воно займає нижню половину картки (~180px).
+3. Картка не центрована по горизонталі (35px зліва, 20px справа на 390-viewport через `align-self: stretch` + асиметричний padding контейнера).
+4. Текст переноситься занадто часто (7 рядків замість 5) — через padding 24×12px з невірним розташуванням контенту.
+
+### Зміни
+
+**`/app/frontend/src/pages/cultures.tsx`** — реструктуризація JSX усіх 3-х карток (Ефективність / Ціна / Застосування):
+- Title + body тепер обгорнуті у внутрішній `<div className={styles.whyCardCopy}>` — щоб згрупувати їх щільно зверху, а зображення винести окремо вниз.
+
+**`/app/frontend/src/pages/cultures.module.css`** — `@media ≤768px`:
+- `.whyGrid`: прибрано `padding-left:15px; padding-right:15px;`; додано `place-items: center` — картка тепер центрується по горизонталі screen-wise.
+- `.whyCard`: `padding: 24px 12px → 24px 16px` (трохи ширший контент для коректного переносу тексту в 5-6 рядків); `gap: 32px → 0` (групування через внутрішній `.whyCardCopy`); `align-self: stretch → center` (фікс асиметрії).
+- `.whyCardCopy` (новий): `display:flex; flex-direction:column; gap:8px; flex:0 0 auto` — щільний title→body gap 8px.
+- `.whyCardImage`: `margin-top: auto; min-height: 160px; max-height: 200px; object-position: center` — фіксована висота ≈180px у нижній частині картки.
+- `.whyLead`: `padding: 0 20px → 0 27px` (відповідно до центрованої картки 335px на 390-viewport).
+
+### Verification
+- Mobile (390×844): картка 335×378 ✓, центрована (27.5px з обох боків) ✓, title 20/600 Commissioner, body 14/400 Golos Text з gap 8px, фото 285×178 внизу.
+- Title + body тепер читаються як єдиний блок зверху, фото займає нижню половину картки — як на Figma-дизайні.
+
+
 ## 3.14.1) Product Detail Mobile — Round 6 Fixes (DONE — 2026-05-30)
 
 **Скарги користувача (видео + 2 скриншоти):**
