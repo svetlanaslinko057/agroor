@@ -417,7 +417,9 @@
   .relatedGrid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 }
 @media (max-width: 700px) {
-  .main { padding: 130px 16px 56px; }
+  /* Per user request: breadcrumb sits 20px below the sticky navbar on
+     mobile — no more 130px legacy compensation for fixed navbar. */
+  .main { padding: 20px 16px 56px; }
   .title { font-size: 30px; line-height: 1.2; }
   .excerpt { font-size: 16px; }
   .ctaBlock { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -435,7 +437,7 @@
   .tagsRow { padding-top: 16px; }
 }
 @media (max-width: 480px) {
-  .main { padding: 120px 12px 48px; }
+  .main { padding: 20px 12px 48px; }
   .title { font-size: 26px; }
   .metaRow { font-size: 13px; gap: 8px; }
   .ctaBlock { padding: 20px 16px; }

@@ -451,6 +451,10 @@
   }
 }
 @media (max-width: 640px) {
+  /* Per user request: breadcrumb sits 20px below the sticky navbar on
+     mobile — no more 90/140px legacy padding compensating for a fixed
+     navbar (the navbar is sticky now and reserves its own space). */
+  .main { padding: 20px 16px 60px; }
   .title { font-size: 40px; }
   .lead { font-size: 16px; }
   .inner { gap: 36px; }
@@ -476,5 +480,5 @@
 
 @media (max-width: 480px) {
   .title { font-size: 32px; line-height: 1.1; }
-  .main { padding: 90px 16px 60px; }
+  .main { padding: 20px 16px 60px; }
 }
