@@ -482,3 +482,20 @@
   .title { font-size: 32px; line-height: 1.1; }
   .main { padding: 20px 16px 60px; }
 }
+
+/* =====================================================================
+   MOBILE BREADCRUMB OVERRIDES — match /catalog spec (14px / gap 8px)
+   per user request. Must be at end of file so cascade picks them.
+   ===================================================================== */
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+  .breadcrumbCurrent {
+    max-width: 22ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

@@ -652,3 +652,26 @@
   .sideCardImg { width: 100%; height: 150px; min-height: 0; }
   .sideCardMain { padding: 12px 14px 14px; }
 }
+
+
+/* =====================================================================
+   MOBILE OVERRIDES — must come AFTER the max-width: 1100/1280/1440px
+   blocks above so the cascade picks them last on phone viewports.
+   Per user request: breadcrumb sits 20px below the sticky navbar
+   and matches /catalog font size + gap (14px / gap 8px).
+   ===================================================================== */
+@media (max-width: 700px) {
+  .main { padding: 20px 16px 56px !important; }
+  .breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+  .bcCurrent { max-width: 22ch; }
+}
+@media (max-width: 480px) {
+  .main { padding: 20px 12px 48px !important; }
+  .breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+}
